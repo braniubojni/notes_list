@@ -1,7 +1,7 @@
 <template lang="">
   <div class="MainContentWrapper">
     <span @click="togglerFunc">...</span>
-    <ul v-show="toggler">
+    <ul @mouseleave="togglerFunc" v-show="toggler">
       <li>Archive List</li>
       <li @click="removeNotesList(noteId)">Remove List</li>
       <li @click="removeTaskList(noteId)">Clear List</li>
@@ -58,10 +58,11 @@ ul {
   padding: 0;
   list-style: none;
   margin-right: -80px;
-  padding: 5px;
 }
 li {
-  padding: 5px 0;
   cursor: pointer;
+  border-bottom: 1px solid #fff;
+  padding: 7px;
+  color: #dee4e7;
 }
 </style>
