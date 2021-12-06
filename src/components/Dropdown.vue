@@ -3,8 +3,8 @@
     <span @click="togglerFunc">...</span>
     <ul v-show="toggler">
       <li>Archive List</li>
-      <li @click="removeTaskList">Remove List</li>
-      <li>Clear List</li>
+      <li>Remove List</li>
+      <li @click="removeTaskList(noteId)">Clear List</li>
     </ul>
   </div>
 </template>
@@ -13,14 +13,22 @@ import { defineComponent, ref } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 export default defineComponent({
+  props: {
+    noteId: {
+      type: Number,
+      required: false,
+    },
+  },
   setup() {
     const store = useStore();
     const toggler = ref(false);
     const togglerFunc = () => (toggler.value = !toggler.value);
-    const removeTaskList = (id) =>
+    const removeTaskList = (id) => {
       store.getters.removeTaskList({
         id,
       });
+    };
+
     return {
       toggler,
       togglerFunc,

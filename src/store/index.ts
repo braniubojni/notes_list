@@ -40,7 +40,10 @@ export default createStore({
     removeTaskList:
       (state) =>
       ({ id }: any) => {
-        state.notesList.find((item) => item.id === id)?.tasks;
+        let tasks = state.notesList.find((item) => item.id === id)?.tasks;
+        console.log(tasks);
+
+        tasks = [];
       },
     addNewTask:
       (state) =>
