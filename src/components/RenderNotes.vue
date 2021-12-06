@@ -1,5 +1,5 @@
 <template>
-  <button class="addBtn" @click="onAddList">New List</button>
+  <button class="addBtn" @click="onAddList">+New List</button>
   <div class="mainWrapper">
     <div class="notesList" v-for="note in noteList" :key="note.id">
       <Dropdown />
@@ -9,8 +9,8 @@
         <li v-for="(todo, index) in note.tasks" :key="index + Date.now()">
           {{ todo }}
         </li>
+        <li class="newItem" @click="onNewTask(note.id)">+ New Item</li>
       </ul>
-      <button @click="onNewTask(note.id)">Add task</button>
     </div>
   </div>
 </template>
@@ -77,6 +77,7 @@ export default defineComponent({
   background-color: #ecf5f8;
   height: auto;
   width: 20%;
+  border-radius: 15px;
 }
 h1 {
   background-color: hsl(199deg 17% 46%);
@@ -93,8 +94,24 @@ ul {
 }
 li {
   background: #fff;
+  height: 30px;
+  border: solid 1px hsl(180deg 1% 87%);
+  border-radius: 5px;
+    padding: 10px;
 }
 .addBtn {
   align-self: flex-end;
+}
+
+.newItem {
+  background: white;
+  border-style: dotted;
+  cursor: pointer;
+ 
+}
+
+.addBtn{
+  color: white;
+  background: hsl(198deg 15% 56%);;
 }
 </style>
