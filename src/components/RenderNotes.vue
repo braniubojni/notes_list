@@ -2,13 +2,13 @@
   <button class="addBtn" @click="onAddList">New List</button>
   <div class="mainWrapper">
     <div class="notesList" v-for="note in noteList" :key="note.id">
+      <Dropdown />
       <h1>{{ note.name }}</h1>
-      <ul
-        class="todoList"
-        v-for="(todo, index) in note.tasks"
-        :key="index + Date.now()"
-      >
-        <li>{{ todo }}</li>
+
+      <ul class="todoList">
+        <li v-for="(todo, index) in note.tasks" :key="index + Date.now()">
+          {{ todo }}
+        </li>
       </ul>
       <button @click="onNewTask(note.id)">Add task</button>
     </div>
@@ -17,10 +17,13 @@
 
 <script lang="ts">
 import { computed, defineComponent } from "vue";
+import Dropdown from "./Dropdown.vue";
 import { useStore } from "vuex";
 
 export default defineComponent({
-  props: {},
+  components: {
+    Dropdown,
+  },
   setup() {
     const store = useStore();
 
@@ -64,6 +67,7 @@ export default defineComponent({
   display: flex;
   justify-content: space-evenly;
   align-items: baseline;
+  flex-wrap: wrap;
 }
 .notesList {
   display: flex;
@@ -81,7 +85,7 @@ h1 {
 }
 .todoList {
   display: flex;
-  flex-direction: "column";
+  flex-direction: column;
 }
 ul {
   list-style: none;
