@@ -3,7 +3,7 @@
     <span @click="togglerFunc">...</span>
     <ul v-show="toggler">
       <li>Archive List</li>
-      <li>Remove List</li>
+      <li @click="removeNotesList(noteId)">Remove List</li>
       <li @click="removeTaskList(noteId)">Clear List</li>
     </ul>
   </div>
@@ -28,11 +28,17 @@ export default defineComponent({
         id,
       });
     };
+    const removeNotesList = (id) => {
+      store.getters.removeNotesList({
+        id,
+      });
+    };
 
     return {
       toggler,
       togglerFunc,
       removeTaskList,
+      removeNotesList,
     };
   },
 });
