@@ -1,9 +1,5 @@
 <template>
-  <div class="home">
-    <span class="header1">Kanban Board</span
-  ><span class="header2">:Project tracker</span>
-    <RenderNotes />
-  </div>
+  <RenderNotes />
 </template>
 
 <script lang="ts">
@@ -17,3 +13,8 @@ export default defineComponent({
   },
 });
 </script>
+<style>
+* {
+  background: #f5fafb;
+}
+</style>
