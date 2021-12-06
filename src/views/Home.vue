@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <h2>Notes list</h2>
+    <span class="header1">Kanban Board</span
+  ><span class="header2">:Project tracker</span>
     <RenderNotes />
   </div>
 </template>

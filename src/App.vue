@@ -1,26 +1,44 @@
 <template>
   <router-view />
+  <!-- <span class="header1">Kanban Board</span
+  ><span class="header2">:Project tracker</span>
+  <div class="tables">
+    <div class="box"><span class="topic">TO DO</span></div>
+    <div class="box"><span class="topic">DOING</span></div>
+    <div class="box"><span class="topic">DONE</span></div>
+  </div> -->
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.tables {
+  display: flex;
+}
+
+.box {
+  display: flex;
+  width: 30%;
+  height: auto;
+  border: solid 10px white;
+  background-color: #ecf5f8;
+  justify-content: center;
+}
+
+.topic {
   text-align: center;
-  color: #2c3e50;
+  background-color: hsl(199deg 17% 46%);
+  color: white;
+  width: 100%;
+  height: 60px;
+  font-size: 35px;
+  padding-top: 5%;
 }
 
-#nav {
-  padding: 30px;
+.header1 {
+  color: #acbbc3;
+  font-size: 50px;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.header2 {
+  color: #3a515c;
+  font-size: 50px;
 }
 </style>

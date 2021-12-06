@@ -62,13 +62,22 @@ export default defineComponent({
 <style scoped>
 .mainWrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: baseline;
 }
 .notesList {
   display: flex;
+  border: solid white;
   justify-content: center;
   flex-direction: column;
+  background-color: #ecf5f8;
+  height: auto;
+  width: 20%;
+}
+h1 {
+  background-color: hsl(199deg 17% 46%);
+  color: white;
+  text-align: center;
 }
 .todoList {
   display: flex;
@@ -77,6 +86,9 @@ export default defineComponent({
 ul {
   list-style: none;
   padding: 0;
+}
+li {
+  background: #fff;
 }
 .addBtn {
   align-self: flex-end;
