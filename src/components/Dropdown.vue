@@ -1,6 +1,6 @@
-<template lang="">
+<template>
+  <sub @click="togglerFunc">...</sub>
   <div class="MainContentWrapper">
-    <span @click="togglerFunc">...</span>
     <ul @mouseleave="togglerFunc" v-show="toggler">
       <li>Archive List</li>
       <li @click="removeNotesList(noteId)">Remove List</li>
@@ -21,13 +21,16 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
+
     const toggler = ref(false);
+
     const togglerFunc = () => (toggler.value = !toggler.value);
     const removeTaskList = (id) => {
       store.getters.removeTaskList({
         id,
       });
     };
+
     const removeNotesList = (id) => {
       store.getters.removeNotesList({
         id,
@@ -44,13 +47,16 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-span {
+sub {
   cursor: pointer;
+  color: white;
+  background: unset;
 }
 .MainContentWrapper {
   display: flex;
   justify-content: flex-end;
   position: relative;
+  background: #617d8a;
 }
 ul {
   position: absolute;
