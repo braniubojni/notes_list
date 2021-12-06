@@ -37,6 +37,11 @@ export default createStore({
     getNotesList(state) {
       return state.notesList;
     },
+    removeTaskList:
+      (state) =>
+      ({ id }: any) => {
+        state.notesList.find((item) => item.id === id)?.tasks;
+      },
     addNewTask:
       (state) =>
       ({ id, newTask }: any) => {
