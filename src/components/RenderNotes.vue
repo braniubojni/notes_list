@@ -2,7 +2,7 @@
   <button class="addBtn" @click="onAddList">+New List</button>
   <div class="mainWrapper">
     <div class="notesList" v-for="note in noteList" :key="note.id">
-      <Dropdown />
+      <Dropdown :noteId="note.id" />
       <h1>{{ note.name }}</h1>
 
       <ul class="todoList">

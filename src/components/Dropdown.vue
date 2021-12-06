@@ -1,10 +1,10 @@
 <template lang="">
   <div class="MainContentWrapper">
     <span @click="togglerFunc">...</span>
-    <ul v-show="toggler">
+    <ul @mouseleave="togglerFunc" v-show="toggler">
       <li>Archive List</li>
-      <li @click="removeTaskList">Remove List</li>
-      <li>Clear List</li>
+      <li @click="removeNotesList(noteId)">Remove List</li>
+      <li @click="removeTaskList(noteId)">Clear List</li>
     </ul>
   </div>
 </template>
@@ -13,18 +13,32 @@ import { defineComponent, ref } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 export default defineComponent({
+  props: {
+    noteId: {
+      type: Number,
+      required: false,
+    },
+  },
   setup() {
     const store = useStore();
     const toggler = ref(false);
     const togglerFunc = () => (toggler.value = !toggler.value);
-    const removeTaskList = (id) =>
+    const removeTaskList = (id) => {
       store.getters.removeTaskList({
         id,
       });
+    };
+    const removeNotesList = (id) => {
+      store.getters.removeNotesList({
+        id,
+      });
+    };
+
     return {
       toggler,
       togglerFunc,
       removeTaskList,
+      removeNotesList,
     };
   },
 });
@@ -44,10 +58,11 @@ ul {
   padding: 0;
   list-style: none;
   margin-right: -80px;
-  padding: 5px;
 }
 li {
-  padding: 5px 0;
   cursor: pointer;
+  border-bottom: 1px solid #fff;
+  padding: 7px;
+  color: #dee4e7;
 }
 </style>
