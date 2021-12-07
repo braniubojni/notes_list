@@ -27,29 +27,31 @@ export default createStore({
     onAddList(state, newNoteList) {
       state.notesList.push(newNoteList);
     },
+    onRemoveTask(state, id) {
+      const taskObj = state.notesList.find((item) => item.id === id);
+      if (taskObj) {
+        taskObj.tasks = [];
+      }
+    },
+    onClearTasks(state, id) {
+      state.notesList = state.notesList.filter((item) => item.id !== id);
+    },
   },
   actions: {
     ON_ADD_LIST({ commit }, newNoteList) {
       commit("onAddList", newNoteList);
+    },
+    ON_REMOVE_TASK({ commit }, id) {
+      commit("onRemoveTask", id);
+    },
+    ON_CLEAR_TASKS({ commit }, id) {
+      commit("onClearTasks", id);
     },
   },
   getters: {
     getNotesList(state) {
       return state.notesList;
     },
-    removeTaskList:
-      (state) =>
-      ({ id }: any) => {
-        const tasks = state.notesList.find((item) => item.id === id);
-        if (tasks?.tasks) {
-          tasks.tasks = [];
-        }
-      },
-    removeNotesList:
-      (state) =>
-      ({ id }: any) => {
-        state.notesList = state.notesList.filter((item) => item.id !== id);
-      },
     addNewTask:
       (state) =>
       ({ id, newTask }: any) => {

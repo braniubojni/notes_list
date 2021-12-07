@@ -16,5 +16,7 @@ export default defineComponent({
 <style>
 * {
   background: #f5fafb;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 </style>
